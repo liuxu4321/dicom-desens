@@ -4,7 +4,7 @@
 
 ## 外观
 
-![image-20200210120613612](/Users/liuxu/Library/Application Support/typora-user-images/image-20200210120613612.png)
+![image-20200210120613612](https://raw.githubusercontent.com/liuxu4321/dicom-desens/master/image-20200210120613612.png)
 
 ## 运行
 
