@@ -3,6 +3,7 @@ package com.neusoftmedical.neumiva.dicompro.listener;
 import com.neusoftmedical.neumiva.dicompro.ui.FileProcessForm;
 import com.neusoftmedical.neumiva.dicompro.utils.CustomFileUtils;
 import com.neusoftmedical.neumiva.dicompro.utils.DicomFileUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -27,6 +28,17 @@ public class ProcessFileListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String path = fileProcessForm.getFilePath().getText();
+        if(StringUtils.isEmpty(path)){
+            JOptionPane.showMessageDialog(fileProcessForm.getPanel(), "请选择文件夹", "消息", JOptionPane.DEFAULT_OPTION);
+            return;
+        }
+
+
+        int chooseResult = JOptionPane.showConfirmDialog(fileProcessForm.getPanel(), "确认要执行吗？", "确认", JOptionPane.YES_NO_OPTION);
+        if(chooseResult != JOptionPane.YES_OPTION){
+            return;
+        }
+
         List<File> fileList = new ArrayList<>();
         CustomFileUtils.traverseFolder2(path, fileList);
         JTextArea jTextArea = fileProcessForm.getLogText();

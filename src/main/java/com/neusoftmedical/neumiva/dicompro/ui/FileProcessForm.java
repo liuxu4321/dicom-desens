@@ -79,4 +79,7 @@ public class FileProcessForm extends JFrame {
         return hospitalAddress;
     }
 
+    public JPanel getPanel() {
+        return panel;
+    }
 }
