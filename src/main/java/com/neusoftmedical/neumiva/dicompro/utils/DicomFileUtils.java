@@ -1,5 +1,7 @@
 package com.neusoftmedical.neumiva.dicompro.utils;
 
+import com.neusoftmedical.neumiva.dicompro.beans.DicomOptionInfo;
+import com.neusoftmedical.neumiva.dicompro.beans.FolderOptionInfo;
 import org.apache.commons.io.FileUtils;
 import org.dcm4che2.data.DicomObject;
 import org.dcm4che2.data.Tag;
@@ -14,12 +16,19 @@ import java.io.*;
  */
 public class DicomFileUtils {
 
-    private static final String PATIENT_NAME = "neusoftmedical";
-    private static final String HOSPATIAL_NAME = "neusoftmedical";
-    private static final String HOSPATIAL_ADDRESS = "neusoftmedical";
+    private static final String STRING_VALUE = "**";
+    private static final String INTEGER_VALUE = "0";
+    private static final String DATE_VALUE = "00000000";
 
-    public static String dicomDesensitize(String filePath, String patientName, String hospitalName, String hospitalAddress) {
+    public static String dicomDesensitize(String filePath) {
+        FolderOptionInfo folderOptionInfo = (FolderOptionInfo)ApplicationContext.getBean("FolderOptionInfo");
+        DicomOptionInfo dicomOptionInfo = (DicomOptionInfo)ApplicationContext.getBean("DicomOptionInfo");
+        if(dicomOptionInfo == null) {
+            dicomOptionInfo = new DicomOptionInfo();
+        }
         String result = "";
+        String targetPath = "";
+
         File srcFile = new File(filePath);
         if(!isDicom(srcFile)){
             return " not dicom ";
@@ -33,34 +42,90 @@ public class DicomFileUtils {
             dcmObj = din.readDicomObject();
             result = dcmObj.getString(Tag.PatientName);
 
-            //患者信息
-            dcmObj.remove(Tag.PatientName);
-            //医院信息
-            dcmObj.remove(Tag.InstitutionName);
-            dcmObj.remove(Tag.InstitutionAddress);
+            //0 匿名化， //1 删除
+            if(dicomOptionInfo.getPatientNameOption() == 0) {
+                dcmObj.putString(Tag.PatientName, VR.PN, STRING_VALUE);
+            }else{
+                dcmObj.remove(Tag.PatientName);
+            }
 
-            if(!patientName.equals("delete")){
-                dcmObj.putString(Tag.PatientName, VR.PN, patientName);
+            if(dicomOptionInfo.getPatientAgeOption() == 0) {
+                dcmObj.putString(Tag.PatientAge, VR.AS, STRING_VALUE);
+            }else{
+                dcmObj.remove(Tag.PatientAge);
             }
-            if(!hospitalName.equals("delete")){
-                dcmObj.putString(Tag.InstitutionName, VR.LO, hospitalName);
+
+            if(dicomOptionInfo.getPatientBirthDateOption() == 0) {
+                dcmObj.putString(Tag.PatientBirthDate, VR.DA, DATE_VALUE);
+            }else{
+                dcmObj.remove(Tag.PatientBirthDate);
             }
-            if(!hospitalAddress.equals("delete")){
-                dcmObj.putString(Tag.InstitutionAddress, VR.ST, hospitalAddress);
+
+            if(dicomOptionInfo.getPatientSexOption() == 0) {
+                dcmObj.putString(Tag.PatientSex, VR.CS, STRING_VALUE);
+            }else{
+                dcmObj.remove(Tag.PatientSex);
             }
+
+            if(dicomOptionInfo.getInstitutionNameOption() == 0) {
+                dcmObj.putString(Tag.InstitutionName, VR.LO, STRING_VALUE);
+            }else{
+                dcmObj.remove(Tag.InstitutionName);
+            }
+
+            if(dicomOptionInfo.getInstitutionAddressOption() == 0) {
+                dcmObj.putString(Tag.InstitutionAddress, VR.ST, STRING_VALUE);
+            }else{
+                dcmObj.remove(Tag.InstitutionAddress);
+            }
+
+            if(dicomOptionInfo.getStudyIDOption() == 0) {
+                dcmObj.putString(Tag.StudyID, VR.SH, STRING_VALUE);
+            }else{
+                dcmObj.remove(Tag.StudyID);
+            }
+
+            if(dicomOptionInfo.getAccessionNumberOption() == 0) {
+                dcmObj.putString(Tag.AccessionNumber, VR.SH, STRING_VALUE);
+            }else{
+                dcmObj.remove(Tag.AccessionNumber);
+            }
+
+            if(dicomOptionInfo.getOperatorNameOption() == 0) {
+                dcmObj.putString(Tag.OperatorsName, VR.PN, STRING_VALUE);
+            }else{
+                dcmObj.remove(Tag.OperatorsName);
+            }
+
+
+
+
 
             din.close();
 
+
+
             FileOutputStream fos;
 
-            fos = new FileOutputStream(srcFile);
+            if(folderOptionInfo.getCoverFlag() == 0){
+                targetPath = filePath.replace(folderOptionInfo.getSourceFolder(), folderOptionInfo.getTargetFolder());
+                File file = new File(targetPath);
+                if(!file.exists()) {
+                    FileUtils.touch(new File(targetPath));
+                }
+                fos = new FileOutputStream(new File(targetPath));
+            }else {
+                targetPath = srcFile.getAbsolutePath();
+                fos = new FileOutputStream(srcFile);
+            }
+
             BufferedOutputStream bos = new BufferedOutputStream(fos);
             DicomOutputStream dos = new DicomOutputStream(bos);
             dos.writeDicomFile(dcmObj);
             dos.close();
             bos.close();
             fos.close();
-            result = "OK";
+            result = targetPath + " OK";
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

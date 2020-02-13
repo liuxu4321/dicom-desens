@@ -13,13 +13,13 @@ import java.util.List;
 /**
  * Created by Jeffer on 2020/2/7.
  */
-public class SelectFileListener implements ActionListener {
+public class TargetFileListener implements ActionListener {
 
     private JFileChooser fileChooser = new JFileChooser();
 
     private FileProcessForm fileProcessForm;
 
-    public SelectFileListener(FileProcessForm fileProcessForm) {
+    public TargetFileListener(FileProcessForm fileProcessForm) {
         this.fileProcessForm = fileProcessForm;
     }
 
@@ -29,6 +29,6 @@ public class SelectFileListener implements ActionListener {
         fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES );
         fileChooser.showDialog(new JLabel(), "选择");
         File file = fileChooser.getCurrentDirectory();
-        fileProcessForm.getFilePath().setText(file.getAbsolutePath());
+        fileProcessForm.getTargetPath().setText(file.getAbsolutePath());
     }
 }
