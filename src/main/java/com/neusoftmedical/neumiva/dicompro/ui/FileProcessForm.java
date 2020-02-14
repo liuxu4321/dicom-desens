@@ -1,9 +1,6 @@
 package com.neusoftmedical.neumiva.dicompro.ui;
 
-import com.neusoftmedical.neumiva.dicompro.listener.DicomDesenInfoListener;
-import com.neusoftmedical.neumiva.dicompro.listener.ProcessFileListener;
-import com.neusoftmedical.neumiva.dicompro.listener.SelectFileListener;
-import com.neusoftmedical.neumiva.dicompro.listener.TargetFileListener;
+import com.neusoftmedical.neumiva.dicompro.listener.*;
 
 import javax.swing.*;
 import java.awt.event.ItemEvent;
@@ -45,6 +42,7 @@ public class FileProcessForm extends JFrame {
     private JRadioButton studyIDR2;
     private JRadioButton accessionNumberR1;
     private JRadioButton accessionNumberR2;
+    private JButton verifyButton;
 
 
     public FileProcessForm(){}
@@ -54,8 +52,10 @@ public class FileProcessForm extends JFrame {
         JFrame frame = new JFrame("DICOM文件批量脱敏工具");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);   //最大化
+        //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);   //最大化
         frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setSize(800,600);
         frame.setVisible(true);
 
 
@@ -95,6 +95,9 @@ public class FileProcessForm extends JFrame {
 
 
         startButton.addActionListener(new ProcessFileListener(this));
+
+
+        verifyButton.addActionListener(new VerifyDicomListener(this));
 
     }
 

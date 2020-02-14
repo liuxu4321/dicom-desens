@@ -8,6 +8,9 @@ public class DicomHospitalInfo {
     private String institutionName;
     private String institutionAddress;
 
+    public DicomHospitalInfo() {
+    }
+
     public DicomHospitalInfo(String institutionName, String institutionAddress) {
         this.institutionName = institutionName;
         this.institutionAddress = institutionAddress;

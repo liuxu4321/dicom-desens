@@ -9,6 +9,9 @@ public class DicomStudyInfo {
     private String accessionNumber;
     private String operatorName;
 
+    public DicomStudyInfo() {
+    }
+
     public DicomStudyInfo(String studyID, String accessionNumber, String operatorName) {
         this.studyID = studyID;
         this.accessionNumber = accessionNumber;

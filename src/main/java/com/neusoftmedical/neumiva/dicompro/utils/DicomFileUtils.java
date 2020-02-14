@@ -1,7 +1,6 @@
 package com.neusoftmedical.neumiva.dicompro.utils;
 
-import com.neusoftmedical.neumiva.dicompro.beans.DicomOptionInfo;
-import com.neusoftmedical.neumiva.dicompro.beans.FolderOptionInfo;
+import com.neusoftmedical.neumiva.dicompro.beans.*;
 import org.apache.commons.io.FileUtils;
 import org.dcm4che2.data.DicomObject;
 import org.dcm4che2.data.Tag;
@@ -153,6 +152,59 @@ public class DicomFileUtils {
         else if ((b0 == 8 || b0 == 2) && b1 == 0 && b3 == 0)
             return true;
         return false;
+    }
+
+    public static DicomInfo getDicomTagValue(String filePath) {
+        File srcFile = new File(filePath);
+        if(!srcFile.exists() || srcFile.isDirectory() || !isDicom(srcFile)) {
+            return null;
+        }
+        DicomInfo dicomInfo = new DicomInfo();
+        DicomObject dcmObj;
+        DicomInputStream din;
+
+        try {
+            din = new DicomInputStream(srcFile);
+            dcmObj = din.readDicomObject();
+
+            DicomPatientInfo dicomPatientInfo = getPatientInfo(dcmObj);
+            DicomHospitalInfo dicomHospitalInfo = getHospitalInfo(dcmObj);
+            DicomStudyInfo dicomStudyInfo = getStudyInfo(dcmObj);
+            dicomInfo.setDicomPatientInfo(dicomPatientInfo);
+            dicomInfo.setDicomHospitalInfo(dicomHospitalInfo);
+            dicomInfo.setDicomStudyInfo(dicomStudyInfo);
+            return dicomInfo;
+        }catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static DicomPatientInfo getPatientInfo(final DicomObject dcmObj) {
+        DicomPatientInfo dicomPatientInfo = new DicomPatientInfo();
+        dicomPatientInfo.setPatientName(dcmObj.getString(Tag.PatientName));
+        dicomPatientInfo.setPatientAge(dcmObj.getString(Tag.PatientAge));
+        dicomPatientInfo.setPatientBirthDate(dcmObj.getString(Tag.PatientBirthDate));
+        dicomPatientInfo.setPatientSex(dcmObj.getString(Tag.PatientSex));
+        return dicomPatientInfo;
+    }
+
+    public static DicomHospitalInfo getHospitalInfo(final DicomObject dcmObj) {
+        DicomHospitalInfo dicomHospitalInfo = new DicomHospitalInfo();
+        dicomHospitalInfo.setInstitutionName(dcmObj.getString(Tag.InstitutionName));
+        dicomHospitalInfo.setInstitutionAddress(dcmObj.getString(Tag.InstitutionAddress));
+        return dicomHospitalInfo;
+    }
+
+    public static DicomStudyInfo getStudyInfo(final DicomObject dcmObj) {
+        DicomStudyInfo studyInfo = new DicomStudyInfo();
+        studyInfo.setStudyID(dcmObj.getString(Tag.StudyID));
+        studyInfo.setAccessionNumber(dcmObj.getString(Tag.AccessionNumber));
+        studyInfo.setOperatorName(dcmObj.getString(Tag.OperatorsName));
+        return studyInfo;
     }
 
     public static void test(String filePath) {

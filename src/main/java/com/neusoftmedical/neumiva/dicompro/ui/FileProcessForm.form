@@ -3,10 +3,12 @@
   <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="10" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="1602" height="464"/>
+      <xy x="20" y="20" width="1602" height="478"/>
     </constraints>
     <properties/>
-    <border type="none"/>
+    <border type="empty">
+      <size top="10" left="10" bottom="10" right="10"/>
+    </border>
     <children>
       <grid id="69ce" layout-manager="GridLayoutManager" row-count="1" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
@@ -84,7 +86,7 @@
           </scrollpane>
         </children>
       </scrollpane>
-      <grid id="c901" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="c901" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -94,7 +96,7 @@
         <children>
           <component id="5d3f" class="javax.swing.JButton" binding="startButton">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="开始处理"/>
@@ -102,7 +104,7 @@
           </component>
           <hspacer id="e0e1b">
             <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
           <hspacer id="5c108">
@@ -110,6 +112,14 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
+          <component id="c8b5b" class="javax.swing.JButton" binding="verifyButton">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="验证"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <grid id="d1f2a" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -130,7 +140,7 @@
           </component>
         </children>
       </grid>
-      <grid id="95d10" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="95d10" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -138,7 +148,7 @@
         <properties/>
         <border type="etched"/>
         <children>
-          <grid id="b255c" layout-manager="GridLayoutManager" row-count="1" column-count="15" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="b255c" layout-manager="GridLayoutManager" row-count="1" column-count="13" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -162,24 +172,6 @@
                 <properties>
                   <text value="PatientBirthDate[0010,0030]:"/>
                   <toolTipText value="患者生日"/>
-                </properties>
-              </component>
-              <component id="f5fbb" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="0" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="PatientSex[0010,0040]:"/>
-                  <toolTipText value="患者性别"/>
-                </properties>
-              </component>
-              <component id="40600" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="0" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="PatientAge[0010,1010]:"/>
-                  <toolTipText value="患者年龄"/>
                 </properties>
               </component>
               <component id="6d942" class="javax.swing.JRadioButton" binding="patientNameR1">
@@ -216,53 +208,14 @@
                   <text value="删除"/>
                 </properties>
               </component>
-              <component id="4b34d" class="javax.swing.JRadioButton" binding="patientSexR1">
-                <constraints>
-                  <grid row="0" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <selected value="true"/>
-                  <text value="匿名化"/>
-                </properties>
-              </component>
-              <component id="33a74" class="javax.swing.JRadioButton" binding="patientSexR2">
-                <constraints>
-                  <grid row="0" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="删除"/>
-                </properties>
-              </component>
-              <component id="1193f" class="javax.swing.JRadioButton" binding="patientAgeR1">
-                <constraints>
-                  <grid row="0" column="13" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <selected value="true"/>
-                  <text value="匿名化"/>
-                </properties>
-              </component>
-              <component id="acacb" class="javax.swing.JRadioButton" binding="patientAgeR2">
-                <constraints>
-                  <grid row="0" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="删除"/>
-                </properties>
-              </component>
               <hspacer id="fd082">
                 <constraints>
                   <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
               </hspacer>
-              <hspacer id="ffc9">
-                <constraints>
-                  <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </hspacer>
               <hspacer id="e280e">
                 <constraints>
-                  <grid row="0" column="11" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="9" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
               </hspacer>
             </children>
@@ -270,7 +223,7 @@
           <grid id="d2c83" layout-manager="GridLayoutManager" row-count="1" column-count="8" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
             <border type="none"/>
@@ -339,10 +292,10 @@
               </hspacer>
             </children>
           </grid>
-          <grid id="91d9" layout-manager="GridLayoutManager" row-count="1" column-count="12" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="91d9" layout-manager="GridLayoutManager" row-count="1" column-count="11" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
             <border type="none"/>
@@ -358,7 +311,7 @@
               </component>
               <hspacer id="75124">
                 <constraints>
-                  <grid row="0" column="11" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="10" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
               </hspacer>
               <component id="5f9d2" class="javax.swing.JRadioButton" binding="accessionNumberR1">
@@ -396,32 +349,6 @@
                   <text value="删除"/>
                 </properties>
               </component>
-              <component id="a0485" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="0" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="StudyID[0020,0010]:"/>
-                  <toolTipText value="检查号"/>
-                </properties>
-              </component>
-              <component id="4ac8e" class="javax.swing.JRadioButton" binding="studyIDR1">
-                <constraints>
-                  <grid row="0" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <selected value="true"/>
-                  <text value="匿名化"/>
-                </properties>
-              </component>
-              <component id="1688" class="javax.swing.JRadioButton" binding="studyIDR2">
-                <constraints>
-                  <grid row="0" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="删除"/>
-                </properties>
-              </component>
               <component id="e02db" class="javax.swing.JRadioButton" binding="accessionNumberR2">
                 <constraints>
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -440,6 +367,119 @@
                   <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
               </hspacer>
+            </children>
+          </grid>
+          <grid id="20258" layout-manager="GridLayoutManager" row-count="1" column-count="8" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="f5fbb" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="PatientSex[0010,0040]:"/>
+                  <toolTipText value="患者性别"/>
+                </properties>
+              </component>
+              <hspacer id="ccfad">
+                <constraints>
+                  <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </hspacer>
+              <component id="4b34d" class="javax.swing.JRadioButton" binding="patientSexR1">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <selected value="true"/>
+                  <text value="匿名化"/>
+                </properties>
+              </component>
+              <component id="33a74" class="javax.swing.JRadioButton" binding="patientSexR2">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="删除"/>
+                </properties>
+              </component>
+              <component id="40600" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="PatientAge[0010,1010]:"/>
+                  <toolTipText value="患者年龄"/>
+                </properties>
+              </component>
+              <component id="1193f" class="javax.swing.JRadioButton" binding="patientAgeR1">
+                <constraints>
+                  <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <selected value="true"/>
+                  <text value="匿名化"/>
+                </properties>
+              </component>
+              <component id="acacb" class="javax.swing.JRadioButton" binding="patientAgeR2">
+                <constraints>
+                  <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="删除"/>
+                </properties>
+              </component>
+              <hspacer id="ffc9">
+                <constraints>
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </hspacer>
+            </children>
+          </grid>
+          <grid id="b6adf" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="a0485" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="StudyID[0020,0010]:"/>
+                  <toolTipText value="检查号"/>
+                </properties>
+              </component>
+              <hspacer id="f62d2">
+                <constraints>
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </hspacer>
+              <component id="4ac8e" class="javax.swing.JRadioButton" binding="studyIDR1">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <selected value="true"/>
+                  <text value="匿名化"/>
+                </properties>
+              </component>
+              <component id="1688" class="javax.swing.JRadioButton" binding="studyIDR2">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="删除"/>
+                </properties>
+              </component>
             </children>
           </grid>
         </children>
@@ -488,13 +528,15 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="源文件夹："/>
+                  <text value="原始文件夹："/>
                 </properties>
               </component>
               <component id="43b4b" class="javax.swing.JTextField" binding="filePath">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <minimum-size width="400" height="-1"/>
                     <preferred-size width="150" height="-1"/>
+                    <maximum-size width="700" height="-1"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -531,7 +573,9 @@
               <component id="2f34d" class="javax.swing.JTextField" binding="targetPath">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <minimum-size width="400" height="-1"/>
                     <preferred-size width="150" height="-1"/>
+                    <maximum-size width="700" height="-1"/>
                   </grid>
                 </constraints>
                 <properties/>
