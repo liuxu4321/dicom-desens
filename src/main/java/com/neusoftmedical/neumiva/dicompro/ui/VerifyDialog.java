@@ -4,9 +4,14 @@ import com.neusoftmedical.neumiva.dicompro.beans.DicomInfo;
 import com.neusoftmedical.neumiva.dicompro.utils.DicomFileUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -21,6 +26,7 @@ public class VerifyDialog extends JDialog {
     private JButton doVerifyButton;
     private JList dicomTagList;
     private JButton selectFileButton;
+    private JLabel imageLabel;
 
     public VerifyDialog() {
         setContentPane(contentPane);
@@ -133,6 +139,22 @@ public class VerifyDialog extends JDialog {
                     }
                 }
                 dicomTagList.setListData(vector);
+
+                //获取dicom图像
+                File imageFile = null;
+                try {
+                    imageFile = DicomFileUtils.dicom2JPEG(file);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                try {
+                    ImageIcon imageIcon = new ImageIcon(ImageIO.read(imageFile));
+                    imageIcon.setImage(imageIcon.getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT));
+
+                    imageLabel.setIcon(imageIcon);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
     }

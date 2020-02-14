@@ -135,7 +135,7 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="该软件限于脱敏医学影像文件（DICOM），主要对患者姓名，医院名称以及医院地址进行处理。"/>
+              <text value="该软件限于脱敏医学影像文件（DICOM），针对患者信息，医院信息以及检查信息进行匿名化或删除处理。"/>
             </properties>
           </component>
         </children>
